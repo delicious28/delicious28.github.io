@@ -13,7 +13,7 @@
 <meta property="og:description" content="使用国内镜像进行替换加速 打开工程文件根目录 build.gradle  在 buildscript 和 allprojects 的 repositories 中分别注释掉 jcenter()，并使用国内镜像进行替换：maven{url ‘http:&#x2F;&#x2F;maven.aliyun.com&#x2F;nexus&#x2F;content&#x2F;groups&#x2F;public&#x2F;&#39;}  在 buildscript 的 repo">
 <meta property="og:locale">
 <meta property="article:published_time" content="2021-01-19T07:29:00.000Z">
-<meta property="article:modified_time" content="2021-01-19T07:49:06.689Z">
+<meta property="article:modified_time" content="2021-01-19T08:01:04.750Z">
 <meta property="article:author" content="mm">
 <meta property="article:tag" content="技术文档">
 <meta name="twitter:card" content="summary">
@@ -151,8 +151,7 @@
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">buildscript &#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        maven&#123;url &#x27;http://maven.aliyun.com/nexus/content/groups/public/&#x27;&#125;</span><br><span class="line">        maven&#123;url &quot;https://jitpack.io&quot;&#125;</span><br><span class="line"><span class="comment">//        jcenter()</span></span><br><span class="line">    &#125;</span><br><span class="line">    dependencies &#123;</span><br><span class="line">        classpath &#x27;com.android.tools.build:gradle:2.2.0&#x27;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// <span class="doctag">NOTE:</span> Do not place your application dependencies here; they belong</span></span><br><span class="line">        <span class="comment">// in the individual module build.gradle files</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">allprojects &#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        maven&#123;url &#x27;http://maven.aliyun.com/nexus/content/groups/public/&#x27;&#125;</span><br><span class="line"><span class="comment">//        jcenter()</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">task clean(type: Delete) &#123;</span><br><span class="line">    delete rootProject.buildDir</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>最后发现心里感觉会快些。。。</p>
 <hr>
-<p>实在忍不住可以尝试手动下载gradle</p>
-<p>参考：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/558e5955bfbd?from=singlemessage">https://www.jianshu.com/p/558e5955bfbd?from=singlemessage</a></p>
+<p>实在忍不住可以尝试手动下载gradle<br>参考：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/558e5955bfbd?from=singlemessage">https://www.jianshu.com/p/558e5955bfbd?from=singlemessage</a><br>ps: 最后复制一份gradle-x.x.x-all.zip.lck文件，重命名为gradle-x.x.x-all.zip.ok；</p>
 
       
     </div>
