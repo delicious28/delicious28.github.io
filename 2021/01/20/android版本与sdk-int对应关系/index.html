@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>int对应关系 | 毛毛博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Android版本与Android sdk int的对应关系Android开发中经常会用需要知道Android版本与SDK_INT的对应关系，所以这里总结一下，方便以后查看。 官方链接地址: https:&#x2F;&#x2F;developer.android.com&#x2F;guide&#x2F;topics&#x2F;manifest&#x2F;uses-sdk-element.html Android版本与Android sdk int的对应关系">
+<meta property="og:type" content="article">
+<meta property="og:title" content="int对应关系">
+<meta property="og:url" content="https://delicious28.github.io/2021/01/20/android%E7%89%88%E6%9C%AC%E4%B8%8Esdk-int%E5%AF%B9%E5%BA%94%E5%85%B3%E7%B3%BB/index.html">
+<meta property="og:site_name" content="毛毛博客">
+<meta property="og:description" content="Android版本与Android sdk int的对应关系Android开发中经常会用需要知道Android版本与SDK_INT的对应关系，所以这里总结一下，方便以后查看。 官方链接地址: https:&#x2F;&#x2F;developer.android.com&#x2F;guide&#x2F;topics&#x2F;manifest&#x2F;uses-sdk-element.html Android版本与Android sdk int的对应关系">
+<meta property="og:locale">
+<meta property="article:published_time" content="2021-01-20T08:18:38.000Z">
+<meta property="article:modified_time" content="2021-01-20T08:22:44.930Z">
+<meta property="article:author" content="mm">
+<meta property="article:tag" content="技术文档">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <!-- <link type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css" rel="stylesheet"> -->
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+<link rel="stylesheet" href="/css/scrollUp/image.css">
+
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <div class="logo">
+        <img src="/webwxgeticon.jpeg" alt="Profile Picture">
+      </div>
+      <div id="title">毛毛博客</div>
+      
+        <div id="subtitle">技术积累</div>
+      
+       <ul class="my-socials">
+  
+ 
+</ul>
+    </div>
+  </div>
+  <div id="header-inner" class="">
+    <nav id="main-nav">
+      <a id="main-nav-toggle" class="nav-icon"></a>
+      <!--
+        
+          
+            <a class="main-nav-link" href="/">首页</a>
+          
+            <a class="main-nav-link" href="/categories/H5">H5</a>
+          
+            <a class="main-nav-link" href="/categories/Android">Andoird</a>
+          
+            <a class="main-nav-link" href="/categories/NodeJS">NodeJS</a>
+          
+            <a class="main-nav-link" href="/archives">归档</a>
+          
+        
+      -->
+    </nav>
+    <nav id="title-nav" style="display:none">
+      <a href="/">毛毛博客</a>
+      <img src="/webwxgeticon.jpeg" alt="Profile Picture">
+      <!--
+      <span id="title-nav-socials">
+        
+       
+     </span>
+      -->
+    </nav>
+    <nav id="sub-nav">
+      
+      <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+    </nav>
+    <div id="search-form-wrap">
+      <form action="http://www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+        <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+        <input type="submit" value="" class="search-form-submit">
+        <input name=tn type=hidden value="bds">
+        <input name=cl type=hidden value="3">
+        <input name=ct type=hidden value="2097152">
+        <input type="hidden" name="si" value="delicious28.github.io">
+      </form>
+    </div>
+  </div>
+  <div class="site-nav" style="display: none;">
+    <ul>
+      
+      
+        <li><a href="/">首页</a></li>
+      
+        <li><a href="/categories/H5">H5</a></li>
+      
+        <li><a href="/categories/Android">Andoird</a></li>
+      
+        <li><a href="/categories/NodeJS">NodeJS</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+      
+    </ul>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="android版本与sdk-int对应关系-android版本与sdk-int对应关系" class="article article-type-android版本与sdk-int对应关系" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/01/20/android%E7%89%88%E6%9C%AC%E4%B8%8Esdk-int%E5%AF%B9%E5%BA%94%E5%85%B3%E7%B3%BB/" class="article-date">
+  <time datetime="2021-01-20T08:18:38.000Z" itemprop="datePublished">2021-01-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      int对应关系
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Android版本与Android sdk int的对应关系<br>Android开发中经常会用需要知道Android版本与SDK_INT的对应关系，所以这里总结一下，方便以后查看。</p>
+<p>官方链接地址:</p>
+<p><a target="_blank" rel="noopener" href="https://developer.android.com/guide/topics/manifest/uses-sdk-element.html">https://developer.android.com/guide/topics/manifest/uses-sdk-element.html</a></p>
+<p>Android版本与Android sdk int的对应关系如下:</p>
+<table>
+<thead>
+<tr>
+<th>平台版本</th>
+<th>API 级别</th>
+<th>VERSION_CODE</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Android 10.0</td>
+<td>29</td>
+<td>Q</td>
+<td>平台亮点</td>
+</tr>
+<tr>
+<td>Android 9</td>
+<td>28</td>
+<td>P</td>
+<td>平台亮点</td>
+</tr>
+<tr>
+<td>Android 8.1</td>
+<td>27</td>
+<td>O_MR1</td>
+<td>平台亮点</td>
+</tr>
+<tr>
+<td>Android 8.0</td>
+<td>26</td>
+<td>O</td>
+<td>平台亮点</td>
+</tr>
+<tr>
+<td>Android 7.1.1</td>
+<td>Android 7.1.1</td>
+<td>Android 7.1.1</td>
+<td>Android 7.1.1</td>
+</tr>
+<tr>
+<td>Android 7.1</td>
+<td>25</td>
+<td>N_MR1</td>
+<td>平台亮点</td>
+</tr>
+<tr>
+<td>Android 7.0</td>
+<td>24</td>
+<td>N</td>
+<td>平台亮点</td>
+</tr>
+<tr>
+<td>Android 6.0</td>
+<td>23</td>
+<td>M</td>
+<td>平台亮点</td>
+</tr>
+<tr>
+<td>Android 5.1</td>
+<td>22</td>
+<td>LOLLIPOP_MR1</td>
+<td>平台亮点</td>
+</tr>
+<tr>
+<td>Android 5.0</td>
+<td>21</td>
+<td>LOLLIPOP</td>
+<td>Android 5.0</td>
+</tr>
+<tr>
+<td>Android 4.4W</td>
+<td>20</td>
+<td>KITKAT_WATCH</td>
+<td>仅限 KitKat for Wearables</td>
+</tr>
+<tr>
+<td>Android 4.4</td>
+<td>19</td>
+<td>KITKAT</td>
+<td>平台亮点</td>
+</tr>
+<tr>
+<td>Android 4.3</td>
+<td>18</td>
+<td>JELLY_BEAN_MR2</td>
+<td>平台亮点</td>
+</tr>
+<tr>
+<td>Android 4.2、4.2.2</td>
+<td>17</td>
+<td>JELLY_BEAN_MR1</td>
+<td>平台亮点</td>
+</tr>
+<tr>
+<td>Android 4.1、4.1.1</td>
+<td>16</td>
+<td>JELLY_BEAN</td>
+<td>平台亮点</td>
+</tr>
+<tr>
+<td>Android 4.0.3、4.0.4</td>
+<td>15</td>
+<td>ICE_CREAM_SANDWICH_MR1</td>
+<td>平台亮点</td>
+</tr>
+<tr>
+<td>Android 4.0、4.0.1、4.0.2</td>
+<td>14</td>
+<td>ICE_CREAM_SANDWICH</td>
+<td>Android 4.0、4.0.1、4.0.2</td>
+</tr>
+<tr>
+<td>Android 3.2</td>
+<td>13</td>
+<td>HONEYCOMB_MR2</td>
+<td></td>
+</tr>
+<tr>
+<td>Android 3.1.x</td>
+<td>12</td>
+<td>HONEYCOMB_MR1</td>
+<td>平台亮点</td>
+</tr>
+<tr>
+<td>Android 3.0.x</td>
+<td>11</td>
+<td>HONEYCOMB</td>
+<td>平台亮点</td>
+</tr>
+<tr>
+<td>Android 2.3.4</td>
+<td>Android 2.3.4</td>
+<td>Android 2.3.4</td>
+<td>Android 2.3.4</td>
+</tr>
+<tr>
+<td>Android 2.3.3</td>
+<td>10</td>
+<td>GINGERBREAD_MR1</td>
+<td>平台亮点</td>
+</tr>
+<tr>
+<td>Android 2.3.2</td>
+<td>Android 2.3.2</td>
+<td>Android 2.3.2</td>
+<td>Android 2.3.2</td>
+</tr>
+<tr>
+<td>Android 2.3.1</td>
+<td>Android 2.3.1</td>
+<td>Android 2.3.1</td>
+<td>Android 2.3.1</td>
+</tr>
+<tr>
+<td>Android 2.3</td>
+<td>9</td>
+<td>GINGERBREAD</td>
+<td>Android 2.3</td>
+</tr>
+<tr>
+<td>Android 2.2.x</td>
+<td>8</td>
+<td>FROYO</td>
+<td>平台亮点</td>
+</tr>
+<tr>
+<td>Android 2.1.x</td>
+<td>7</td>
+<td>ECLAIR_MR1</td>
+<td>平台亮点</td>
+</tr>
+<tr>
+<td>Android 2.0.1</td>
+<td>6</td>
+<td>ECLAIR_0_1</td>
+<td>Android 2.0.1</td>
+</tr>
+<tr>
+<td>Android 2.0</td>
+<td>5</td>
+<td>ECLAIR</td>
+<td>Android 2.0</td>
+</tr>
+<tr>
+<td>Android 1.6</td>
+<td>4</td>
+<td>DONUT</td>
+<td>平台亮点</td>
+</tr>
+<tr>
+<td>Android 1.5</td>
+<td>3</td>
+<td>CUPCAKE</td>
+<td>平台亮点</td>
+</tr>
+<tr>
+<td>Android 1.1</td>
+<td>2</td>
+<td>BASE_1_1</td>
+<td></td>
+</tr>
+<tr>
+<td>Android 1.0</td>
+<td>1</td>
+<td>BASE</td>
+<td></td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://delicious28.github.io/2021/01/20/android%E7%89%88%E6%9C%AC%E4%B8%8Esdk-int%E5%AF%B9%E5%BA%94%E5%85%B3%E7%B3%BB/" data-id="ckk55sg0q0000qmwx24rr9foj" class="article-share-link">Share</a>
+      
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2021/01/19/%E8%A7%A3%E5%86%B3Android%E4%B8%8B%E8%BD%BDgradle%E6%85%A2%E7%9A%84%E9%97%AE%E9%A2%98/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">解决Android下载gradle慢的问题</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 mm<br>
+      Theme <a href="https://github.com/henryhuang/oishi" target="_blank">Oishi</a>, Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <!--
+      <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/categories/H5" class="mobile-nav-link">H5</a>
+  
+    <a href="/categories/Android" class="mobile-nav-link">Andoird</a>
+  
+    <a href="/categories/NodeJS" class="mobile-nav-link">NodeJS</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+</nav>
+    -->
+    
+
+<!-- 百度分享 start -->
+
+<!-- 百度分享 end -->
+
+<script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<script src="/js/jquery.scrollUp.min.js"></script>
+
+
+<script src="/js/jquery.transform.js"></script>
+
+
+<script src="/js/menu.js"></script>
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/scrollUp.js"></script>
+
+
+  </div>
+</body>
+</html>
