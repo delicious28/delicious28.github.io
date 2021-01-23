@@ -114,6 +114,66 @@
   
 
     
+    <article id="post-webview打开时有瞬间白屏的问题" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/01/23/webview%E6%89%93%E5%BC%80%E6%97%B6%E6%9C%89%E7%9E%AC%E9%97%B4%E7%99%BD%E5%B1%8F%E7%9A%84%E9%97%AE%E9%A2%98/" class="article-date">
+  <time datetime="2021-01-23T05:09:34.000Z" itemprop="datePublished">2021-01-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Android-H5/">Android,H5</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/01/23/webview%E6%89%93%E5%BC%80%E6%97%B6%E6%9C%89%E7%9E%AC%E9%97%B4%E7%99%BD%E5%B1%8F%E7%9A%84%E9%97%AE%E9%A2%98/">webview打开时有瞬间白屏的问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="遇到的效果是打开webview的时候会有白屏的效果，如下面这样"><a href="#遇到的效果是打开webview的时候会有白屏的效果，如下面这样" class="headerlink" title="遇到的效果是打开webview的时候会有白屏的效果，如下面这样"></a>遇到的效果是打开webview的时候会有白屏的效果，如下面这样</h3><div style="width:200px;margin:auto">
+<img src="/2021/01/23/webview%E6%89%93%E5%BC%80%E6%97%B6%E6%9C%89%E7%9E%AC%E9%97%B4%E7%99%BD%E5%B1%8F%E7%9A%84%E9%97%AE%E9%A2%98/1611378960352.gif" class="">
+</div>
+
+<h3 id="找了很久的原因，总结下来有这样几点"><a href="#找了很久的原因，总结下来有这样几点" class="headerlink" title="找了很久的原因，总结下来有这样几点"></a>找了很久的原因，总结下来有这样几点</h3><p><strong>1、 loadUrl的时间</strong></p>
+<p>如果打开activity的时候webview已经加载了，但这个时候url由于各种原因还没有获取到，没有执行 webView.loadUrl，如果这样请先隐藏webview，准备好后再显示</p>
+<p><strong>2、加载HTML的时间</strong></p>
+<p>我的做法是webview先隐藏，等到HTML加载完后再显示</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPageFinished</span><span class="params">(WebView view, String url)</span> </span>&#123;</span><br><span class="line">    view.setVisibility(View.VISIBLE);</span><br><span class="line">    <span class="keyword">super</span>.onPageFinished(view, url);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>如果这样打开时还是会有瞬间白屏的闪烁，那可能就要从网页端着手进行优化了</p>
+<p><strong>3、网页打开时在html里直接给body设一个背景色</strong></p>
+<p>因为网页的一些样式和图片是需要下载的，如果是单页面的话还要等JS下载完执行后才进行渲染，这都要时间</p>
+<p>所以直接在html返回时就直接在页面里给页面元素定义个背景色</p>
+<p>直接在head里给body设了背景图和背景色</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  ...</span><br><span class="line">  <span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">    body&#123;</span><br><span class="line">      background-image: url(&#x27;./img/app-local-loading-bg.png&#x27;);</span><br><span class="line">      background-repeat: no-repeat;</span><br><span class="line"><span class="css">      <span class="selector-tag">background-color</span>: <span class="selector-id">#5a0037</span>;</span></span><br><span class="line"><span class="css">      <span class="selector-tag">background-size</span><span class="selector-pseudo">:cover</span>;</span></span><br><span class="line">    &#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://delicious28.github.io/2021/01/23/webview%E6%89%93%E5%BC%80%E6%97%B6%E6%9C%89%E7%9E%AC%E9%97%B4%E7%99%BD%E5%B1%8F%E7%9A%84%E9%97%AE%E9%A2%98/" data-id="ckk99j20t0000tswx6zpg8t4x" class="article-share-link">Share</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+    
+  
+
+    
     <article id="android版本与sdk-int对应关系-android版本与sdk-int对应关系" class="article article-type-android版本与sdk-int对应关系" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/01/20/android%E7%89%88%E6%9C%AC%E4%B8%8Esdk-int%E5%AF%B9%E5%BA%94%E5%85%B3%E7%B3%BB/" class="article-date">
