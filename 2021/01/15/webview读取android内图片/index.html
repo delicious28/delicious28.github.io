@@ -1,137 +1,140 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  
-  <title>webview读取android内图片 | 毛毛博客</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="为了进一步优化Android内网页的打开速度，准备将静态图片全都放进app内，不再去请求网络。 曾尝试直接在网页里把图片地址写成  1file:&#x2F;&#x2F;&#x2F;android_asset&#x2F;xxx.png 图片虽然存在，但浏览器会报 1Not allowed to load local resource 为了解决这个问题需要换一个思路，通过拦截webview的reque">
-<meta property="og:type" content="article">
-<meta property="og:title" content="webview读取android内图片">
-<meta property="og:url" content="https://www.mmhh.life/2021/01/15/webview%E8%AF%BB%E5%8F%96android%E5%86%85%E5%9B%BE%E7%89%87/index.html">
-<meta property="og:site_name" content="毛毛博客">
-<meta property="og:description" content="为了进一步优化Android内网页的打开速度，准备将静态图片全都放进app内，不再去请求网络。 曾尝试直接在网页里把图片地址写成  1file:&#x2F;&#x2F;&#x2F;android_asset&#x2F;xxx.png 图片虽然存在，但浏览器会报 1Not allowed to load local resource 为了解决这个问题需要换一个思路，通过拦截webview的reque">
-<meta property="og:locale">
-<meta property="article:published_time" content="2021-01-15T07:53:24.000Z">
-<meta property="article:modified_time" content="2021-01-23T05:43:03.558Z">
-<meta property="article:author" content="delicious28@gmail.com">
-<meta property="article:tag" content="Android">
-<meta name="twitter:card" content="summary">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  <!-- <link type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css" rel="stylesheet"> -->
-  
-<link rel="stylesheet" href="/css/style.css">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
 
-  
-<link rel="stylesheet" href="/css/scrollUp/image.css">
+    <title>
+        
+        webview读取android内图片 - undefined
+        
+    </title>
 
-  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
-  
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/aircloud.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
 <meta name="generator" content="Hexo 5.3.0"></head>
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <div class="logo">
-        <img src="/webwxgeticon.jpeg" alt="Profile Picture">
-      </div>
-      <div id="title">毛毛博客</div>
-      
-        <div id="subtitle">记录一切</div>
-      
-       <ul class="my-socials">
-  
- 
-</ul>
-    </div>
-  </div>
-  <div id="header-inner" class="">
-    <nav id="main-nav">
-      <a id="main-nav-toggle" class="nav-icon"></a>
-      <!--
-        
-          
-            <a class="main-nav-link" href="/">首页</a>
-          
-            <a class="main-nav-link" href="/tags/H5">H5</a>
-          
-            <a class="main-nav-link" href="/tags/Android">Andoird</a>
-          
-            <a class="main-nav-link" href="/tags/NodeJS">NodeJS</a>
-          
-        
-      -->
-    </nav>
-    <nav id="title-nav" style="display:none">
-      <a href="/">毛毛博客</a>
-      <img src="/webwxgeticon.jpeg" alt="Profile Picture">
-      <!--
-      <span id="title-nav-socials">
-        
-       
-     </span>
-      -->
-    </nav>
-    <nav id="sub-nav">
-      
-      <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-    </nav>
-    <div id="search-form-wrap">
-      <form action="http://www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
-        <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
-        <input type="submit" value="" class="search-form-submit">
-        <input name=tn type=hidden value="bds">
-        <input name=cl type=hidden value="3">
-        <input name=ct type=hidden value="2097152">
-        <input type="hidden" name="si" value="www.mmhh.life">
-      </form>
-    </div>
-  </div>
-  <div class="site-nav" style="display: none;">
-    <ul>
-      
-      
-        <li><a href="/">首页</a></li>
-      
-        <li><a href="/tags/H5">H5</a></li>
-      
-        <li><a href="/tags/Android">Andoird</a></li>
-      
-        <li><a href="/tags/NodeJS">NodeJS</a></li>
-      
-      
-    </ul>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main"><article id="post-webview读取android内图片" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/01/15/webview%E8%AF%BB%E5%8F%96android%E5%86%85%E5%9B%BE%E7%89%87/" class="article-date">
-  <time datetime="2021-01-15T07:53:24.000Z" itemprop="datePublished">2021-01-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      webview读取android内图片
-    </h1>
-  
 
-      </header>
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> 记录一切 </i>
+</div>
+
+<div class="index-container">
     
-    <div class="article-entry" itemprop="articleBody">
-      
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/webwxgeticon.jpeg" />
+        </div>
+        <div class="name">
+            <i>delicious28@gmail.com</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags/Android">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <!-- <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li> -->
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> 记录一切 </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        webview读取android内图片
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2021-01-15 15:53:24</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/Android" title="Android">Android</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
         <p>为了进一步优化Android内网页的打开速度，准备将静态图片全都放进app内，不再去请求网络。</p>
 <p>曾尝试直接在网页里把图片地址写成 </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file:&#x2F;&#x2F;&#x2F;android_asset&#x2F;xxx.png</span><br></pre></td></tr></table></figure>
@@ -140,95 +143,78 @@
 <p>为了解决这个问题需要换一个思路，通过拦截webview的request请求，然后返回本地图片来解决</p>
 <p>判断如果图片名称包含app-local的，并且app内有这张图片的，便直接返回应用内的图片</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> WebResourceResponse <span class="title">shouldInterceptRequest</span><span class="params">(WebView view, WebResourceRequest request)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    String url = request.getUrl().toString();</span><br><span class="line"></span><br><span class="line">    AssetManager assets = mContext.getResources().getAssets();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (url.contains(<span class="string">&quot;app-local&quot;</span>)) &#123;</span><br><span class="line">        String fileName = <span class="string">&quot;&quot;</span>;</span><br><span class="line">        Pattern pat=Pattern.compile(<span class="string">&quot;[\\w-]+[\\.][\\w-]+[\\.](\\w)+.$&quot;</span>);<span class="comment">//正则判断</span></span><br><span class="line">        Matcher mc=pat.matcher(url);<span class="comment">//条件匹配</span></span><br><span class="line">        <span class="keyword">while</span>(mc.find()) &#123;</span><br><span class="line">            fileName= mc.group();<span class="comment">//截取文件名后缀名</span></span><br><span class="line">            fileName = fileName.replaceAll(<span class="string">&quot;\\.(\\w+)\\.&quot;</span>,<span class="string">&quot;.&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(fileName!=<span class="string">&quot;&quot;</span>)&#123;</span><br><span class="line">            InputStream input = getClass().getResourceAsStream(<span class="string">&quot;/assets/cacheImg/&quot;</span>+fileName);</span><br><span class="line">            <span class="keyword">if</span>(input!=<span class="keyword">null</span>)&#123;</span><br><span class="line">                WebResourceResponse response = <span class="keyword">new</span> WebResourceResponse(<span class="string">&quot;image/png&quot;</span>, <span class="string">&quot;UTF-8&quot;</span>, input);</span><br><span class="line">                <span class="keyword">return</span> response;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span>  <span class="keyword">super</span>.shouldInterceptRequest(view, request);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
     </div>
-    <footer class="article-footer">
-      
-        <a data-url="https://www.mmhh.life/2021/01/15/webview%E8%AF%BB%E5%8F%96android%E5%86%85%E5%9B%BE%E7%89%87/" data-id="ckjxzv1d40000rowx256u0eht" class="article-share-link">Share</a>
-      
+</div>
 
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/" rel="tag">Android</a></li></ul>
+    </div>
+</div>
 
-    </footer>
-  </div>
-  
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+    </ul>
     
-<nav id="article-nav">
-  
-    <a href="/2021/01/19/%E8%A7%A3%E5%86%B3Android%E4%B8%8B%E8%BD%BDgradle%E6%85%A2%E7%9A%84%E9%97%AE%E9%A2%98/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          解决Android下载gradle慢的问题
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2021/01/11/Android%E5%86%85Webview%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Android内Webview上传文件的解决方案</div>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-</section>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2021 delicious28@gmail.com<br>
-      Theme <a href="https://github.com/henryhuang/oishi" target="_blank">Oishi</a>, Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
+    <p>
+        Created By <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>  Theme <a target="_blank" rel="noopener" href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
 </footer>
-    </div>
-    <!--
-      <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">首页</a>
-  
-    <a href="/tags/H5" class="mobile-nav-link">H5</a>
-  
-    <a href="/tags/Android" class="mobile-nav-link">Andoird</a>
-  
-    <a href="/tags/NodeJS" class="mobile-nav-link">NodeJS</a>
-  
-</nav>
-    -->
-    
-
-<!-- 百度分享 start -->
-
-<!-- 百度分享 end -->
-
-<script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
 
 
 
 
-<script src="/js/jquery.scrollUp.min.js"></script>
-
-
-<script src="/js/jquery.transform.js"></script>
-
-
-<script src="/js/menu.js"></script>
-
-
-
-<script src="/js/script.js"></script>
-
-
-<script src="/js/scrollUp.js"></script>
-
-
-  </div>
 </body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = ""
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://delicious28.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+
+
 </html>

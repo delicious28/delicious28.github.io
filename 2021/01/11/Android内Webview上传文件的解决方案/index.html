@@ -1,232 +1,218 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  
-  <title>Android内Webview上传文件的解决方案 | 毛毛博客</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="网上大部分的都是兼容android3，android4的 可以参考这个 https:&#x2F;&#x2F;stackoverflow.com&#x2F;questions&#x2F;5907369&#x2F;file-upload-in-webview 在高版本下以上方法是不生效的，可以参考下列代码 12345678910mWebView.setWebChromeClient(new WebChromeClient() &amp;#123;     &#x2F;">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Android内Webview上传文件的解决方案">
-<meta property="og:url" content="https://www.mmhh.life/2021/01/11/Android%E5%86%85Webview%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/index.html">
-<meta property="og:site_name" content="毛毛博客">
-<meta property="og:description" content="网上大部分的都是兼容android3，android4的 可以参考这个 https:&#x2F;&#x2F;stackoverflow.com&#x2F;questions&#x2F;5907369&#x2F;file-upload-in-webview 在高版本下以上方法是不生效的，可以参考下列代码 12345678910mWebView.setWebChromeClient(new WebChromeClient() &amp;#123;     &#x2F;">
-<meta property="og:locale">
-<meta property="article:published_time" content="2021-01-11T08:51:39.000Z">
-<meta property="article:modified_time" content="2021-01-23T05:42:59.773Z">
-<meta property="article:author" content="delicious28@gmail.com">
-<meta property="article:tag" content="Android">
-<meta name="twitter:card" content="summary">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  <!-- <link type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css" rel="stylesheet"> -->
-  
-<link rel="stylesheet" href="/css/style.css">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
 
-  
-<link rel="stylesheet" href="/css/scrollUp/image.css">
+    <title>
+        
+        Android内Webview上传文件的解决方案 - undefined
+        
+    </title>
 
-  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
-  
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/aircloud.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
 <meta name="generator" content="Hexo 5.3.0"></head>
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <div class="logo">
-        <img src="/webwxgeticon.jpeg" alt="Profile Picture">
-      </div>
-      <div id="title">毛毛博客</div>
-      
-        <div id="subtitle">记录一切</div>
-      
-       <ul class="my-socials">
-  
- 
-</ul>
-    </div>
-  </div>
-  <div id="header-inner" class="">
-    <nav id="main-nav">
-      <a id="main-nav-toggle" class="nav-icon"></a>
-      <!--
-        
-          
-            <a class="main-nav-link" href="/">首页</a>
-          
-            <a class="main-nav-link" href="/tags/H5">H5</a>
-          
-            <a class="main-nav-link" href="/tags/Android">Andoird</a>
-          
-            <a class="main-nav-link" href="/tags/NodeJS">NodeJS</a>
-          
-        
-      -->
-    </nav>
-    <nav id="title-nav" style="display:none">
-      <a href="/">毛毛博客</a>
-      <img src="/webwxgeticon.jpeg" alt="Profile Picture">
-      <!--
-      <span id="title-nav-socials">
-        
-       
-     </span>
-      -->
-    </nav>
-    <nav id="sub-nav">
-      
-      <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-    </nav>
-    <div id="search-form-wrap">
-      <form action="http://www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
-        <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
-        <input type="submit" value="" class="search-form-submit">
-        <input name=tn type=hidden value="bds">
-        <input name=cl type=hidden value="3">
-        <input name=ct type=hidden value="2097152">
-        <input type="hidden" name="si" value="www.mmhh.life">
-      </form>
-    </div>
-  </div>
-  <div class="site-nav" style="display: none;">
-    <ul>
-      
-      
-        <li><a href="/">首页</a></li>
-      
-        <li><a href="/tags/H5">H5</a></li>
-      
-        <li><a href="/tags/Android">Andoird</a></li>
-      
-        <li><a href="/tags/NodeJS">NodeJS</a></li>
-      
-      
-    </ul>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main"><article id="post-Android内Webview上传文件的解决方案" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2021/01/11/Android%E5%86%85Webview%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" class="article-date">
-  <time datetime="2021-01-11T08:51:39.000Z" itemprop="datePublished">2021-01-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      Android内Webview上传文件的解决方案
-    </h1>
-  
 
-      </header>
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> 记录一切 </i>
+</div>
+
+<div class="index-container">
     
-    <div class="article-entry" itemprop="articleBody">
-      
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/webwxgeticon.jpeg" />
+        </div>
+        <div class="name">
+            <i>delicious28@gmail.com</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags/Android">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <!-- <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li> -->
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> 记录一切 </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        Android内Webview上传文件的解决方案
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2021-01-11 16:51:39</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/Android" title="Android">Android</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
         <p>网上大部分的都是兼容android3，android4的 可以参考这个 <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/5907369/file-upload-in-webview">https://stackoverflow.com/questions/5907369/file-upload-in-webview</a></p>
 <p>在高版本下以上方法是不生效的，可以参考下列代码</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">mWebView.setWebChromeClient(<span class="keyword">new</span> WebChromeClient() &#123;</span><br><span class="line">     <span class="comment">//For Android API  = 21 (5.0 OS)</span></span><br><span class="line">     <span class="meta">@Override</span></span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">onShowFileChooser</span><span class="params">(WebView webView, ValueCallback&lt;Uri[]&gt; filePathCallback, WebChromeClient.FileChooserParams fileChooserParams)</span> </span>&#123;</span><br><span class="line">         uploadMessageAboveL = filePathCallback;</span><br><span class="line">         openImageChooserActivity();</span><br><span class="line">         <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">     &#125;</span><br><span class="line">    	...</span><br><span class="line"> &#125;);</span><br></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">openImageChooserActivity</span><span class="params">()</span> </span>&#123;</span><br><span class="line">     Intent intent = <span class="keyword">new</span> Intent(</span><br><span class="line">             Intent.ACTION_PICK,</span><br><span class="line">             android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);</span><br><span class="line">     startActivityForResult(intent, FILE_CHOOSER_RESULT_CODE);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onActivityResult</span><span class="params">(<span class="keyword">int</span> requestCode, <span class="keyword">int</span> resultCode, Intent data)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(requestCode == FILE_CHOOSER_RESULT_CODE)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">null</span> == mUploadMessage &amp;&amp; <span class="keyword">null</span> == uploadMessageAboveL) <span class="keyword">return</span>;</span><br><span class="line">            Uri result = data == <span class="keyword">null</span> || resultCode != RESULT_OK ? <span class="keyword">null</span> : data.getData();</span><br><span class="line">            <span class="keyword">if</span> (uploadMessageAboveL != <span class="keyword">null</span>) &#123;</span><br><span class="line">                onActivityResultAboveL(requestCode, resultCode, data);</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (mUploadMessage != <span class="keyword">null</span>) &#123;</span><br><span class="line">                mUploadMessage.onReceiveValue(result);</span><br><span class="line">                mUploadMessage = <span class="keyword">null</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">super</span>.onActivityResult(requestCode, resultCode, data);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@TargetApi(Build.VERSION_CODES.LOLLIPOP)</span></span><br><span class="line">   <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">onActivityResultAboveL</span><span class="params">(<span class="keyword">int</span> requestCode, <span class="keyword">int</span> resultCode, Intent intent)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">if</span> (requestCode != FILE_CHOOSER_RESULT_CODE || uploadMessageAboveL == <span class="keyword">null</span>)</span><br><span class="line">           <span class="keyword">return</span>;</span><br><span class="line">       Uri[] results = <span class="keyword">null</span>;</span><br><span class="line">       <span class="keyword">if</span> (resultCode == Activity.RESULT_OK) &#123;</span><br><span class="line">           <span class="keyword">if</span> (intent != <span class="keyword">null</span>) &#123;</span><br><span class="line">               String dataString = intent.getDataString();</span><br><span class="line">               ClipData clipData = intent.getClipData();</span><br><span class="line">               <span class="keyword">if</span> (clipData != <span class="keyword">null</span>) &#123;</span><br><span class="line">                   results = <span class="keyword">new</span> Uri[clipData.getItemCount()];</span><br><span class="line">                   <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; clipData.getItemCount(); i++) &#123;</span><br><span class="line">                       ClipData.Item item = clipData.getItemAt(i);</span><br><span class="line">                       results[i] = item.getUri();</span><br><span class="line">                   &#125;</span><br><span class="line">               &#125;</span><br><span class="line">               <span class="keyword">if</span> (dataString != <span class="keyword">null</span>)</span><br><span class="line">                   results = <span class="keyword">new</span> Uri[]&#123;Uri.parse(dataString)&#125;;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       uploadMessageAboveL.onReceiveValue(results);</span><br><span class="line">       uploadMessageAboveL = <span class="keyword">null</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
-      
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
     </div>
-    <footer class="article-footer">
-      
-        <a data-url="https://www.mmhh.life/2021/01/11/Android%E5%86%85Webview%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" data-id="ckjsbv50u0000v6wxaol32dd1" class="article-share-link">Share</a>
-      
+</div>
 
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/" rel="tag">Android</a></li></ul>
+    </div>
+</div>
 
-    </footer>
-  </div>
-  
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+    </ul>
     
-<nav id="article-nav">
-  
-    <a href="/2021/01/15/webview%E8%AF%BB%E5%8F%96android%E5%86%85%E5%9B%BE%E7%89%87/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          webview读取android内图片
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2021/01/11/%E6%8A%A5%E9%94%99%E8%A7%A3%E5%86%B3/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Android NoClassDefFoundError with java.util.Base64 报错解决</div>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-</section>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2021 delicious28@gmail.com<br>
-      Theme <a href="https://github.com/henryhuang/oishi" target="_blank">Oishi</a>, Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
+    <p>
+        Created By <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>  Theme <a target="_blank" rel="noopener" href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
 </footer>
-    </div>
-    <!--
-      <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">首页</a>
-  
-    <a href="/tags/H5" class="mobile-nav-link">H5</a>
-  
-    <a href="/tags/Android" class="mobile-nav-link">Andoird</a>
-  
-    <a href="/tags/NodeJS" class="mobile-nav-link">NodeJS</a>
-  
-</nav>
-    -->
-    
-
-<!-- 百度分享 start -->
-
-<!-- 百度分享 end -->
-
-<script src="//cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
 
 
 
 
-<script src="/js/jquery.scrollUp.min.js"></script>
-
-
-<script src="/js/jquery.transform.js"></script>
-
-
-<script src="/js/menu.js"></script>
-
-
-
-<script src="/js/script.js"></script>
-
-
-<script src="/js/scrollUp.js"></script>
-
-
-  </div>
 </body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = ""
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://delicious28.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+
+
 </html>
