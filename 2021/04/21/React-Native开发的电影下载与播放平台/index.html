@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="毛毛的博客">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        React Native开发的电影下载与播放平台 - 毛毛的博客 | MaoMao&#39;s Blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/aircloud.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> 毛毛博客 - 记录一切 </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/webwxgeticon.jpeg" />
+        </div>
+        <div class="name">
+            <i>delicious28@gmail.com</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            
+                <li >
+                    <a href="/tags/H5">
+                        <i class="iconfont icon-biaoqian1"></i>
+                        <span>H5</span>
+                    </a>
+                </li>
+            
+                <li >
+                    <a href="/tags/Android">
+                        <i class="iconfont icon-biaoqian1"></i>
+                        <span>Android</span>
+                    </a>
+                </li>
+            
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <!-- <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li> -->
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E4%B8%AAReact-Native%E5%BC%80%E5%8F%91%E7%9A%84%E7%94%B5%E5%BD%B1%E4%B8%8B%E8%BD%BD%E4%B8%8E%E6%92%AD%E6%94%BE%E5%B9%B3%E5%8F%B0"><span class="toc-text">一个React Native开发的电影下载与播放平台</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BA%90%E7%A0%81"><span class="toc-text">源码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%88%E6%9E%9C"><span class="toc-text">效果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E7%94%B5%E5%BD%B1%E4%B8%8B%E8%BD%BD"><span class="toc-text">关于电影下载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E6%92%AD%E6%94%BE"><span class="toc-text">关于播放</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> 毛毛博客 - 记录一切 </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        React Native开发的电影下载与播放平台
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2021-04-21 18:04:38</span></span>
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h2 id="一个React-Native开发的电影下载与播放平台"><a href="#一个React-Native开发的电影下载与播放平台" class="headerlink" title="一个React Native开发的电影下载与播放平台"></a>一个React Native开发的电影下载与播放平台</h2><h3 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h3><p><a target="_blank" rel="noopener" href="https://github.com/delicious28/mm_movie">https://github.com/delicious28/mm_movie</a></p>
+<h3 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h3><div style="width:200px;margin-right:20px;display:inline-block">
+    <img src="/2021/04/21/React-Native%E5%BC%80%E5%8F%91%E7%9A%84%E7%94%B5%E5%BD%B1%E4%B8%8B%E8%BD%BD%E4%B8%8E%E6%92%AD%E6%94%BE%E5%B9%B3%E5%8F%B0/S10421-17555013.png" class="" width="200">
+</div>
+<div style="width:200px;margin-right:20px;display:inline-block">
+    <img src="/2021/04/21/React-Native%E5%BC%80%E5%8F%91%E7%9A%84%E7%94%B5%E5%BD%B1%E4%B8%8B%E8%BD%BD%E4%B8%8E%E6%92%AD%E6%94%BE%E5%B9%B3%E5%8F%B0/S10421-17560083.png" class="" width="200">
+</div>
+
+<h3 id="关于电影下载"><a href="#关于电影下载" class="headerlink" title="关于电影下载"></a>关于电影下载</h3><p>电影是通过aria2下载到服务器，下载时也是服务器实时获取aria2的进度返回的</p>
+<h3 id="关于播放"><a href="#关于播放" class="headerlink" title="关于播放"></a>关于播放</h3><p>为了方便在电视机顶盒上播放，目前是通过手机自带播放器播放的。</p>
+<p>不过 android代码里有接入过饺子视频组件（ <a target="_blank" rel="noopener" href="https://github.com/Jzvd/JZVideo">https://github.com/Jzvd/JZVideo</a> ），把注释的代码放开即可使用；</p>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+    </ul>
+    
+    <p>
+        Created By <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>  Theme <a target="_blank" rel="noopener" href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://delicious28.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+
+
+</html>
