@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="毛毛的博客">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        mongodb 全文搜索 - 毛毛的博客 | MaoMao&#39;s Blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/aircloud.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> 毛毛博客 - 记录一切 </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/webwxgeticon.jpeg" />
+        </div>
+        <div class="name">
+            <i>delicious28@gmail.com</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            
+                <li >
+                    <a href="/tags/H5">
+                        <i class="iconfont icon-biaoqian1"></i>
+                        <span>H5</span>
+                    </a>
+                </li>
+            
+                <li >
+                    <a href="/tags/Android">
+                        <i class="iconfont icon-biaoqian1"></i>
+                        <span>Android</span>
+                    </a>
+                </li>
+            
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <!-- <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li> -->
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E6%AF%94%E8%BE%83low%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F"><span class="toc-text">1、比较low的处理方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81%E7%B1%BB%E4%BC%BCElastic-Search%E3%80%81Solr%E7%AD%89%E5%85%A8%E6%96%87%E6%90%9C%E7%B4%A2%E7%9A%84%E6%9F%A5%E8%AF%A2%E6%96%B9%E5%BC%8F"><span class="toc-text">2、类似Elastic Search、Solr等全文搜索的查询方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5-%E5%85%88%E7%BB%99%E8%A6%81%E6%90%9C%E7%B4%A2%E7%9A%84%E5%AD%97%E6%AE%B5%E6%B7%BB%E5%8A%A0%E7%B4%A2%E5%BC%95"><span class="toc-text">第一步 先给要搜索的字段添加索引</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5-%E5%A6%82%E6%9E%9C%E6%98%AF%E4%B8%AD%E6%96%87%E7%9A%84%E8%AF%9D%EF%BC%8C-%E9%9C%80%E8%A6%81%E6%89%8B%E5%8A%A8%E5%B0%86%E8%BF%99%E4%BA%9B%E5%AD%97%E6%AE%B5%E8%BF%9B%E8%A1%8C%E5%88%86%E8%AF%8D%EF%BC%88%E8%8B%B1%E6%96%87%E7%9B%B4%E6%8E%A5%E8%B7%B3%E8%BF%87%EF%BC%89"><span class="toc-text">第二步 如果是中文的话， 需要手动将这些字段进行分词（英文直接跳过）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5-%E6%9F%A5%E8%AF%A2"><span class="toc-text">第三步 查询</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> 毛毛博客 - 记录一切 </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        mongodb 全文搜索
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2022-05-19 15:25:29</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/mongodb" title="mongodb">mongodb</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h2 id="1、比较low的处理方式"><a href="#1、比较low的处理方式" class="headerlink" title="1、比较low的处理方式"></a>1、比较low的处理方式</h2><p>通过正则来匹配关键字来查询，查找字段内容是否包含你要查询的关键字</p>
+<p>就是类似sql里like的查询方式</p>
+<p>select * from table where xx like yy</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">db.user.find(&#123;&quot;name&quot;:&#x2F;xx&#x2F;&#125;)</span><br><span class="line"></span><br><span class="line">或者</span><br><span class="line"></span><br><span class="line">db.user.find(&#123;&quot;name&quot;:&#123;</span><br><span class="line">    $regex: new RegExp(&#39;xx&#39;),</span><br><span class="line">    $options: &#39;$i&#39;</span><br><span class="line">&#125;&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="2、类似Elastic-Search、Solr等全文搜索的查询方式"><a href="#2、类似Elastic-Search、Solr等全文搜索的查询方式" class="headerlink" title="2、类似Elastic Search、Solr等全文搜索的查询方式"></a>2、类似Elastic Search、Solr等全文搜索的查询方式</h2><p>其实搜索原理主要还是基于分词，其实mongodb自带这个功能</p>
+<p><a target="_blank" rel="noopener" href="http://www.ttlsa.com/mongodb/mongodb-full-text-search-mongodb-ttlsa-tutorial-series/">http://www.ttlsa.com/mongodb/mongodb-full-text-search-mongodb-ttlsa-tutorial-series/</a></p>
+<h3 id="第一步-先给要搜索的字段添加索引"><a href="#第一步-先给要搜索的字段添加索引" class="headerlink" title="第一步 先给要搜索的字段添加索引"></a>第一步 先给要搜索的字段添加索引</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">db.books.createIndex(&#123;</span><br><span class="line">	&quot;title&quot;:&quot;text&quot;,</span><br><span class="line">	&quot;desc&quot;:&quot;text&quot; &#x2F;&#x2F;哪些字段需要查询，就添加哪些</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="第二步-如果是中文的话，-需要手动将这些字段进行分词（英文直接跳过）"><a href="#第二步-如果是中文的话，-需要手动将这些字段进行分词（英文直接跳过）" class="headerlink" title="第二步 如果是中文的话， 需要手动将这些字段进行分词（英文直接跳过）"></a>第二步 如果是中文的话， 需要手动将这些字段进行分词（英文直接跳过）</h3><p>这些是mongodb直接支持的语言<br><a target="_blank" rel="noopener" href="https://www.mongodb.com/docs/v6.0/reference/text-search-languages/">https://www.mongodb.com/docs/v6.0/reference/text-search-languages/</a></p>
+<p>以node环境为例，中文的话推荐使用 NodeJieba<br><a target="_blank" rel="noopener" href="https://www.npmjs.com/package/nodejieba">https://www.npmjs.com/package/nodejieba</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">npm install nodejieba</span><br><span class="line"></span><br><span class="line">var nodejieba &#x3D; require(&quot;nodejieba&quot;);</span><br><span class="line">var result &#x3D; nodejieba.cut(&quot;南京市长江大桥&quot;);</span><br><span class="line">console.log(result);</span><br><span class="line">&#x2F;&#x2F;[&quot;南京市&quot;,&quot;长江大桥&quot;]</span><br></pre></td></tr></table></figure>
+<p>将分好的词以空格分隔保存到数据库，建议新建个字段保存，搜索时也已该字段查询</p>
+<h3 id="第三步-查询"><a href="#第三步-查询" class="headerlink" title="第三步 查询"></a>第三步 查询</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">db.collection1.find(&#123;$text: &#123; $search: inputValue&#125;&#125;)</span><br><span class="line"></span><br><span class="line"># 还可以按照相似度加上排序</span><br><span class="line"></span><br><span class="line">db.collection1.find(&#123;</span><br><span class="line">    $text: &#123; $search: inputValue&#125;&#125;, </span><br><span class="line">    &#123;score: &#123;$meta: &quot;textScore&quot;&#125;&#125;</span><br><span class="line">)</span><br><span class="line">.sort(&#123; score:&#123;$meta: &quot;textScore&quot;&#125; &#125;)</span><br></pre></td></tr></table></figure>
+<ol>
+<li>一个查询最多可以指定一个$text表达式。</li>
+<li>$text查询不能出现在$nor表达式中。</li>
+<li>$text查询不能出现在$elemMatch查询表达式或$elemMatch表达式中。</li>
+<li>要$text在$or表达式中使用查询，$or必须对数组中的所有子句都建立索引。</li>
+<li>hint()如果查询包含$text查询表达式，则无法使用。</li>
+<li>$natural如果查询包含$text表达式，则不能指定排序顺序。</li>
+<li>不能将$text需要特殊文本索引的表达式与需要不同类型特殊索引的查询运算符组合在一起。例如，不能将$text表达式与$near运算符结合在一起。</li>
+<li>视图不支持文本搜索。</li>
+</ol>
+<p>参考文档:<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39657585/article/details/108431397">https://blog.csdn.net/qq_39657585/article/details/108431397</a></p>
+<p><a target="_blank" rel="noopener" href="https://mongoing.com/archives/81357">https://mongoing.com/archives/81357</a></p>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+    </ul>
+    
+    <p>
+        Created By <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>  Theme <a target="_blank" rel="noopener" href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://delicious28.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+
+
+</html>
