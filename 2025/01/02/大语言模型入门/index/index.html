@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang=zh-CN>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:description" content="毛毛的博客">
+    <meta property="og:type" content="website">
+    <meta name="description" content="毛毛的博客">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        大语言模型入门 - 毛毛的博客 | MaoMao&#39;s Blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/aircloud.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_28hi1hpxx24.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+
+    
+
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> 毛毛博客 - 记录一切 </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/webwxgeticon.jpeg" />
+        </div>
+        <div class="name">
+            <i>delicious28@gmail.com</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/collect/">
+                    <i class="iconfont icon-shoucang1"></i>
+                    <span>收藏</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%A7%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B-LLM-%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97"><span class="toc-text">大语言模型(LLM)入门指南</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95"><span class="toc-text">目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-text">引言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AD%E6%BA%90%E6%A8%A1%E5%9E%8B%E6%A6%82%E8%A7%88"><span class="toc-text">闭源模型概览</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#GPT%E7%B3%BB%E5%88%97-OpenAI"><span class="toc-text">GPT系列 (OpenAI)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Claude%E7%B3%BB%E5%88%97-Anthropic"><span class="toc-text">Claude系列 (Anthropic)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Gemini%E7%B3%BB%E5%88%97-Google"><span class="toc-text">Gemini系列 (Google)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E9%97%AD%E6%BA%90%E6%A8%A1%E5%9E%8B"><span class="toc-text">其他闭源模型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E6%BA%90%E6%A8%A1%E5%9E%8B%E7%94%9F%E6%80%81"><span class="toc-text">开源模型生态</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Llama%E7%B3%BB%E5%88%97"><span class="toc-text">Llama系列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mistral%E7%B3%BB%E5%88%97"><span class="toc-text">Mistral系列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E5%BC%80%E6%BA%90%E6%A8%A1%E5%9E%8B"><span class="toc-text">其他开源模型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%B8%E5%BF%83%E6%9C%AF%E8%AF%AD%E8%A7%A3%E9%87%8A"><span class="toc-text">核心术语解释</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5"><span class="toc-text">基础概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%AD%E7%BB%83%E7%9B%B8%E5%85%B3"><span class="toc-text">训练相关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A8%E7%90%86%E4%BC%98%E5%8C%96"><span class="toc-text">推理优化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E6%8C%87%E5%8D%97"><span class="toc-text">本地部署指南</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#LM-Studio%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97"><span class="toc-text">LM Studio使用指南</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ollama%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B"><span class="toc-text">Ollama快速上手</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%BA%90"><span class="toc-text">参考资源</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90"><span class="toc-text">学习资源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E4%B8%8B%E8%BD%BD"><span class="toc-text">模型下载</span></a></li></ol></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-bg" id="search-bg"></div>
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> 毛毛博客 - 记录一切 </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        大语言模型入门
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2025-01-02 15:29:01</span></span>
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h1 id="大语言模型-LLM-入门指南"><a href="#大语言模型-LLM-入门指南" class="headerlink" title="大语言模型(LLM)入门指南"></a>大语言模型(LLM)入门指南</h1><h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
+<li><a href="#%E5%BC%95%E8%A8%80">引言</a></li>
+<li><a href="#%E9%97%AD%E6%BA%90%E6%A8%A1%E5%9E%8B%E6%A6%82%E8%A7%88">闭源模型概览</a></li>
+<li><a href="#%E5%BC%80%E6%BA%90%E6%A8%A1%E5%9E%8B%E7%94%9F%E6%80%81">开源模型生态</a></li>
+<li><a href="#%E6%A0%B8%E5%BF%83%E6%9C%AF%E8%AF%AD%E8%A7%A3%E9%87%8A">核心术语解释</a></li>
+<li><a href="#%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2%E6%8C%87%E5%8D%97">本地部署指南</a></li>
+<li><a href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%BA%90">参考资源</a></li>
+</ul>
+<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>大语言模型(Large Language Models, LLMs)正在改变我们与计算机交互的方式。本文将为您提供一个全面的入门指南，涵盖当前主流模型、关键概念以及实践部署方法。</p>
+<h2 id="闭源模型概览"><a href="#闭源模型概览" class="headerlink" title="闭源模型概览"></a>闭源模型概览</h2><h3 id="GPT系列-OpenAI"><a href="#GPT系列-OpenAI" class="headerlink" title="GPT系列 (OpenAI)"></a>GPT系列 (OpenAI)</h3><ul>
+<li><strong>GPT-4 Turbo</strong>: OpenAI最新的旗舰模型，具有更长的上下文窗口和更新的知识库</li>
+<li><strong>GPT-4</strong>: 在推理、创造力和专业任务上表现优异</li>
+<li><strong>GPT-3.5 Turbo</strong>: 性价比较高的选择，适合大多数日常应用场景</li>
+</ul>
+<h3 id="Claude系列-Anthropic"><a href="#Claude系列-Anthropic" class="headerlink" title="Claude系列 (Anthropic)"></a>Claude系列 (Anthropic)</h3><ul>
+<li><strong>Claude 3 Opus</strong>: 在复杂推理和专业任务上表现出色</li>
+<li><strong>Claude 3 Sonnet</strong>: 平衡了性能和效率</li>
+<li><strong>Claude 3 Haiku</strong>: 响应速度快，适合简单任务</li>
+</ul>
+<h3 id="Gemini系列-Google"><a href="#Gemini系列-Google" class="headerlink" title="Gemini系列 (Google)"></a>Gemini系列 (Google)</h3><ul>
+<li><strong>Gemini Ultra</strong>: Google最强大的多模态模型</li>
+<li><strong>Gemini Pro</strong>: 适合大多数商业应用场景</li>
+<li><strong>Gemini Nano</strong>: 针对移动设备优化的轻量级版本</li>
+</ul>
+<h3 id="其他闭源模型"><a href="#其他闭源模型" class="headerlink" title="其他闭源模型"></a>其他闭源模型</h3><ul>
+<li><strong>Pi (Inflection AI)</strong>: 专注于对话交互</li>
+<li><strong>Claude-instant</strong>: Anthropic的快速响应版本</li>
+<li><strong>PaLM 2</strong>: Google的大规模语言模型</li>
+</ul>
+<h2 id="开源模型生态"><a href="#开源模型生态" class="headerlink" title="开源模型生态"></a>开源模型生态</h2><h3 id="Llama系列"><a href="#Llama系列" class="headerlink" title="Llama系列"></a>Llama系列</h3><ul>
+<li><strong>Llama 2</strong>: Meta发布的开源模型，有7B、13B、70B等不同规格</li>
+<li><strong>Llama 2 Chat</strong>: 经过指令微调的对话版本</li>
+</ul>
+<h3 id="Mistral系列"><a href="#Mistral系列" class="headerlink" title="Mistral系列"></a>Mistral系列</h3><ul>
+<li><strong>Mistral 7B</strong>: 在较小参数量下展现出色性能</li>
+<li><strong>Mixtral 8x7B</strong>: 稀疏专家混合模型，性能接近GPT-3.5</li>
+<li><strong>Open Mistral 7B</strong>: 社区维护的开源版本</li>
+</ul>
+<h3 id="其他开源模型"><a href="#其他开源模型" class="headerlink" title="其他开源模型"></a>其他开源模型</h3><ul>
+<li><strong>Yi系列</strong>: 01.AI开源的高性能模型</li>
+<li><strong>Qwen系列</strong>: 阿里云开源的通用大模型</li>
+<li><strong>Baichuan系列</strong>: 百川智能的开源模型</li>
+<li><strong>ChatGLM系列</strong>: 清华开源的双语对话模型</li>
+</ul>
+<h2 id="核心术语解释"><a href="#核心术语解释" class="headerlink" title="核心术语解释"></a>核心术语解释</h2><h3 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h3><ul>
+<li><strong>Token</strong>: 模型处理文本的基本单位，可能是单词、字母或标点符号</li>
+<li><strong>上下文窗口(Context Window)</strong>: 模型能够同时处理的最大token数量</li>
+<li><strong>参数量</strong>: 模型的规模和复杂度指标，通常以B(十亿)为单位</li>
+</ul>
+<h3 id="训练相关"><a href="#训练相关" class="headerlink" title="训练相关"></a>训练相关</h3><ul>
+<li><strong>预训练(Pre-training)</strong>: 模型在大规模文本数据上的初始训练阶段</li>
+<li><strong>微调(Fine-tuning)</strong>: 在特定任务或领域数据上的针对性训练</li>
+<li><strong>指令微调(Instruction Tuning)</strong>: 提升模型对指令的理解和执行能力</li>
+</ul>
+<h3 id="推理优化"><a href="#推理优化" class="headerlink" title="推理优化"></a>推理优化</h3><ul>
+<li><strong>量化(Quantization)</strong>: 减少模型参数精度以降低资源需求</li>
+<li><strong>KV Cache</strong>: 缓存注意力计算结果以提升推理速度</li>
+<li><strong>Prompt Engineering</strong>: 优化输入提示以获得更好的输出效果</li>
+</ul>
+<h2 id="本地部署指南"><a href="#本地部署指南" class="headerlink" title="本地部署指南"></a>本地部署指南</h2><h3 id="LM-Studio使用指南"><a href="#LM-Studio使用指南" class="headerlink" title="LM Studio使用指南"></a>LM Studio使用指南</h3><ol>
+<li><p>安装配置</p>
+<ul>
+<li>从官网下载LM Studio安装包</li>
+<li>支持Windows、MacOS和Linux系统</li>
+<li>建议配置8GB以上内存，有独立显卡更佳</li>
+</ul>
+</li>
+<li><p>模型下载</p>
+<ul>
+<li>在Models标签页浏览可用模型</li>
+<li>选择适合本地设备的模型大小</li>
+<li>推荐入门模型：Mistral 7B、Llama 2 7B</li>
+</ul>
+</li>
+<li><p>运行设置</p>
+<ul>
+<li>选择合适的量化等级（4-bit、5-bit等）</li>
+<li>调整上下文长度</li>
+<li>配置模型参数（温度、采样策略等）</li>
+</ul>
+</li>
+</ol>
+<h3 id="Ollama快速上手"><a href="#Ollama快速上手" class="headerlink" title="Ollama快速上手"></a>Ollama快速上手</h3><ol>
+<li><p>基础安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># MacOS</span></span><br><span class="line">brew install ollama</span><br><span class="line"></span><br><span class="line"><span class="comment"># Linux</span></span><br><span class="line">curl -fsSL https://ollama.com/install.sh | sh</span><br><span class="line"></span><br><span class="line"><span class="comment"># Windows</span></span><br><span class="line"><span class="comment"># 从官网下载安装包</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>常用命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 拉取模型</span></span><br><span class="line">ollama pull mistral</span><br><span class="line"></span><br><span class="line"><span class="comment"># 运行模型</span></span><br><span class="line">ollama run mistral</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看已安装模型</span></span><br><span class="line">ollama list</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>进阶使用</p>
+<ul>
+<li>自定义模型配置</li>
+<li>API集成开发</li>
+<li>多模型切换使用</li>
+</ul>
+</li>
+</ol>
+<h2 id="参考资源"><a href="#参考资源" class="headerlink" title="参考资源"></a>参考资源</h2><p><a target="_blank" rel="noopener" href="http://www.ollama.com/">www.ollama.com</a></p>
+<h3 id="学习资源"><a href="#学习资源" class="headerlink" title="学习资源"></a>学习资源</h3><ul>
+<li>Hugging Face文档</li>
+<li>Papers with Code LLM板块</li>
+<li>GitHub优质项目</li>
+</ul>
+<h3 id="模型下载"><a href="#模型下载" class="headerlink" title="模型下载"></a>模型下载</h3><ul>
+<li>Hugging Face模型仓库</li>
+<li>ModelScope模型平台</li>
+<li>各官方GitHub仓库</li>
+</ul>
+<p>大语言模型技术正在快速发展，本文介绍的内容可能会随时间更新。建议读者持续关注各大模型发布平台和技术社区的最新动态。在实践中，可以从小模型开始尝试，逐步过渡到更复杂的应用场景。</p>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+        <div id="lv-container"></div>
+        <div class="giscus"></div>
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>  Theme <a target="_blank" rel="noopener" href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = ""
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+</html>

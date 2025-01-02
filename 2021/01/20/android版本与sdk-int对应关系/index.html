@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang=zh-CN>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:description" content="毛毛的博客">
+    <meta property="og:type" content="website">
+    <meta name="description" content="毛毛的博客">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        android版本与sdk-int对应关系 - 毛毛的博客 | MaoMao&#39;s Blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/aircloud.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_28hi1hpxx24.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+
+    
+
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> 毛毛博客 - 记录一切 </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/webwxgeticon.jpeg" />
+        </div>
+        <div class="name">
+            <i>delicious28@gmail.com</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/collect/">
+                    <i class="iconfont icon-shoucang1"></i>
+                    <span>收藏</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-bg" id="search-bg"></div>
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> 毛毛博客 - 记录一切 </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        android版本与sdk-int对应关系
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2021-01-20 16:18:38</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#Android" title="Android">Android</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <p>Android开发中经常会用需要知道Android版本与SDK_INT的对应关系，所以这里总结一下，方便以后查看。</p>
+<p>官方链接地址:</p>
+<p><a target="_blank" rel="noopener" href="https://developer.android.com/guide/topics/manifest/uses-sdk-element.html">https://developer.android.com/guide/topics/manifest/uses-sdk-element.html</a></p>
+<p>Android版本与Android sdk int的对应关系如下:</p>
+<table>
+<thead>
+<tr>
+<th>平台版本</th>
+<th>API 级别</th>
+<th>VERSION_CODE</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Android 10.0</td>
+<td>29</td>
+<td>Q</td>
+<td>平台亮点</td>
+</tr>
+<tr>
+<td>Android 9</td>
+<td>28</td>
+<td>P</td>
+<td>平台亮点</td>
+</tr>
+<tr>
+<td>Android 8.1</td>
+<td>27</td>
+<td>O_MR1</td>
+<td>平台亮点</td>
+</tr>
+<tr>
+<td>Android 8.0</td>
+<td>26</td>
+<td>O</td>
+<td>平台亮点</td>
+</tr>
+<tr>
+<td>Android 7.1.1</td>
+<td>Android 7.1.1</td>
+<td>Android 7.1.1</td>
+<td>Android 7.1.1</td>
+</tr>
+<tr>
+<td>Android 7.1</td>
+<td>25</td>
+<td>N_MR1</td>
+<td>平台亮点</td>
+</tr>
+<tr>
+<td>Android 7.0</td>
+<td>24</td>
+<td>N</td>
+<td>平台亮点</td>
+</tr>
+<tr>
+<td>Android 6.0</td>
+<td>23</td>
+<td>M</td>
+<td>平台亮点</td>
+</tr>
+<tr>
+<td>Android 5.1</td>
+<td>22</td>
+<td>LOLLIPOP_MR1</td>
+<td>平台亮点</td>
+</tr>
+<tr>
+<td>Android 5.0</td>
+<td>21</td>
+<td>LOLLIPOP</td>
+<td>Android 5.0</td>
+</tr>
+<tr>
+<td>Android 4.4W</td>
+<td>20</td>
+<td>KITKAT_WATCH</td>
+<td>仅限 KitKat for Wearables</td>
+</tr>
+<tr>
+<td>Android 4.4</td>
+<td>19</td>
+<td>KITKAT</td>
+<td>平台亮点</td>
+</tr>
+<tr>
+<td>Android 4.3</td>
+<td>18</td>
+<td>JELLY_BEAN_MR2</td>
+<td>平台亮点</td>
+</tr>
+<tr>
+<td>Android 4.2、4.2.2</td>
+<td>17</td>
+<td>JELLY_BEAN_MR1</td>
+<td>平台亮点</td>
+</tr>
+<tr>
+<td>Android 4.1、4.1.1</td>
+<td>16</td>
+<td>JELLY_BEAN</td>
+<td>平台亮点</td>
+</tr>
+<tr>
+<td>Android 4.0.3、4.0.4</td>
+<td>15</td>
+<td>ICE_CREAM_SANDWICH_MR1</td>
+<td>平台亮点</td>
+</tr>
+<tr>
+<td>Android 4.0、4.0.1、4.0.2</td>
+<td>14</td>
+<td>ICE_CREAM_SANDWICH</td>
+<td>Android 4.0、4.0.1、4.0.2</td>
+</tr>
+<tr>
+<td>Android 3.2</td>
+<td>13</td>
+<td>HONEYCOMB_MR2</td>
+<td></td>
+</tr>
+<tr>
+<td>Android 3.1.x</td>
+<td>12</td>
+<td>HONEYCOMB_MR1</td>
+<td>平台亮点</td>
+</tr>
+<tr>
+<td>Android 3.0.x</td>
+<td>11</td>
+<td>HONEYCOMB</td>
+<td>平台亮点</td>
+</tr>
+<tr>
+<td>Android 2.3.4</td>
+<td>Android 2.3.4</td>
+<td>Android 2.3.4</td>
+<td>Android 2.3.4</td>
+</tr>
+<tr>
+<td>Android 2.3.3</td>
+<td>10</td>
+<td>GINGERBREAD_MR1</td>
+<td>平台亮点</td>
+</tr>
+<tr>
+<td>Android 2.3.2</td>
+<td>Android 2.3.2</td>
+<td>Android 2.3.2</td>
+<td>Android 2.3.2</td>
+</tr>
+<tr>
+<td>Android 2.3.1</td>
+<td>Android 2.3.1</td>
+<td>Android 2.3.1</td>
+<td>Android 2.3.1</td>
+</tr>
+<tr>
+<td>Android 2.3</td>
+<td>9</td>
+<td>GINGERBREAD</td>
+<td>Android 2.3</td>
+</tr>
+<tr>
+<td>Android 2.2.x</td>
+<td>8</td>
+<td>FROYO</td>
+<td>平台亮点</td>
+</tr>
+<tr>
+<td>Android 2.1.x</td>
+<td>7</td>
+<td>ECLAIR_MR1</td>
+<td>平台亮点</td>
+</tr>
+<tr>
+<td>Android 2.0.1</td>
+<td>6</td>
+<td>ECLAIR_0_1</td>
+<td>Android 2.0.1</td>
+</tr>
+<tr>
+<td>Android 2.0</td>
+<td>5</td>
+<td>ECLAIR</td>
+<td>Android 2.0</td>
+</tr>
+<tr>
+<td>Android 1.6</td>
+<td>4</td>
+<td>DONUT</td>
+<td>平台亮点</td>
+</tr>
+<tr>
+<td>Android 1.5</td>
+<td>3</td>
+<td>CUPCAKE</td>
+<td>平台亮点</td>
+</tr>
+<tr>
+<td>Android 1.1</td>
+<td>2</td>
+<td>BASE_1_1</td>
+<td></td>
+</tr>
+<tr>
+<td>Android 1.0</td>
+<td>1</td>
+<td>BASE</td>
+<td></td>
+</tr>
+</tbody></table>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+        <div id="lv-container"></div>
+        <div class="giscus"></div>
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>  Theme <a target="_blank" rel="noopener" href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = ""
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+</html>
